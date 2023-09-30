@@ -25,11 +25,33 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 SvgPicture.asset(
                   "assets/icon/logo.svg",
-                  semanticsLabel: 'C3Web Logo',
-                  height: 60,
+                  semanticsLabel: 'easyWeb Logo',
+                  height: 80,
                 ),
                 SizedBox(
                   height: 40,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/icon/logo_jatim.png",
+                      height: 60,
+                      width: 60,
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Image.asset(
+                      "assets/icon/Logo-GEC.jpeg",
+                      height: 60,
+                      width: 60,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       width: 30,
                     ),
                     Image.asset(
-                      "assets/icon/Logo-GEC.jpeg",
+                      "assets/icon/logo_moklet.png",
                       height: 60,
                       width: 60,
                     ),

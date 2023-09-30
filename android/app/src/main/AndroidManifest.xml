@@ -2,7 +2,7 @@
     package="com.example.c3web">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="c3web"
+        android:label="easyWeb"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

@@ -31,21 +31,21 @@ Widget buildCardTop() {
                 end: Alignment.centerRight,
                 begin: Alignment.centerLeft,
                 colors: [Color(0xFF387FB8), Color(0xFF8CCDEC)])),
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 30),
-              child: Column(
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
-                      "Kursus Terbaik",
+                      "Materi\nPembelajaran\nWeb",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold),
-                      maxLines: 2,
+                      maxLines: 4,
                     ),
                   ),
                   // Container(
@@ -74,13 +74,11 @@ Widget buildCardTop() {
                   // )
                 ],
               ),
-            ),
-          ),
-          SizedBox(
-            width: 150,
-            child: SvgPicture.asset("assets/icon/img_bestcourse.svg"),
-          )
-        ]),
+              SizedBox(
+                width: 150,
+                child: SvgPicture.asset("assets/icon/img_bestcourse.svg"),
+              ),
+            ]),
       ));
 }
 
@@ -180,7 +178,7 @@ class _DashboardState extends State<Dashboard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          "Kursus",
+                          "Materi",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w400),
                         ),

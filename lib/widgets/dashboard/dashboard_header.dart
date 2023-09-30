@@ -27,8 +27,11 @@ class _DashboardHeaderState extends State<DashboardHeader> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SvgPicture.asset("assets/icon/logo.svg",
-                semanticsLabel: 'C3Web Logo')
+            SvgPicture.asset(
+              "assets/icon/logo.svg",
+              semanticsLabel: 'easyWeb Logo',
+              height: 50,
+            )
           ],
         ));
   }
