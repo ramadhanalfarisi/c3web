@@ -1,6 +1,7 @@
 import 'package:c3web/containers/dashboard.dart';
 import 'package:c3web/containers/quiz/css_quiz_form.dart';
 import 'package:c3web/containers/quiz/html_quiz_form.dart';
+import 'package:c3web/containers/quiz/js_quiz_form.dart';
 import 'package:c3web/helpers/image_bytes.dart';
 import 'package:c3web/widgets/templates/header_back.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,17 @@ class _QuizMainState extends State<QuizMain> {
                                         const CssQuizForm())));
                           },
                           child: buildCardChallenge(ImageBytes.imgCss, "CSS",
+                              const EdgeInsets.only(top: 20)),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) =>
+                                        const JsQuizForm())));
+                          },
+                          child: buildCardChallenge(ImageBytes.imgJs, "JavaScript",
                               const EdgeInsets.only(top: 20)),
                         )
                       ]),

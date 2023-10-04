@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:c3web/containers/quiz/quiz_result.dart';
-import 'package:c3web/db/html_quiz_db.dart';
+import 'package:c3web/db/js_quiz_db.dart';
 import 'package:c3web/helpers/colors.dart';
 import 'package:c3web/widgets/templates/button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -9,18 +9,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 
-class HtmlQuizForm extends StatefulWidget {
-  const HtmlQuizForm({super.key});
+class JsQuizForm extends StatefulWidget {
+  const JsQuizForm({super.key});
 
   @override
-  State<HtmlQuizForm> createState() => _HtmlQuizFormState();
+  State<JsQuizForm> createState() => _JsQuizFormState();
 }
 
-class _HtmlQuizFormState extends State<HtmlQuizForm> {
+class _JsQuizFormState extends State<JsQuizForm> {
   List<Widget> carouselQuiz = [];
   List<String> answers = [];
   List<String> currentAnswers = [];
-  late Box<HtmlQuiz> box;
+  late Box<JsQuiz> box;
   String currentKey = "";
   CarouselController carouselController = CarouselController();
   List<int> randomInt = [];
@@ -48,8 +48,8 @@ class _HtmlQuizFormState extends State<HtmlQuizForm> {
   }
 
   initializeBox() async {
-    box = await Hive.openBox<HtmlQuiz>('html_quiz_box');
-    List<Container> car = [];
+    box = await Hive.openBox<JsQuiz>('js_quiz_box');
+    List<Widget> car = [];
     List<String> ans = [];
     for (var i = 0; i < box.length; i++) {
       car.add(buildCarousel(box.getAt(randomInt[i])!));
@@ -60,29 +60,31 @@ class _HtmlQuizFormState extends State<HtmlQuizForm> {
     setState(() {});
   }
 
-  buildCarousel(HtmlQuiz quiz) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        quiz.image != null && quiz.image!.isNotEmpty
-            ? SvgPicture.asset(
-                quiz.image!,
-                width: MediaQuery.of(context).size.width,
-              )
-            : const SizedBox(),
-        Text(
-          quiz.question,
-          style: const TextStyle(fontSize: 14),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        ...buildOptions(quiz)
-      ]),
-    );
+  buildCarousel(JsQuiz quiz) {
+    return ListView(children: [
+      Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          quiz.image != null && quiz.image!.isNotEmpty
+              ? SvgPicture.asset(
+                  quiz.image!,
+                  width: MediaQuery.of(context).size.width,
+                )
+              : const SizedBox(),
+          Text(
+            quiz.question,
+            style: const TextStyle(fontSize: 14),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          ...buildOptions(quiz)
+        ]),
+      ),
+    ]);
   }
 
-  buildOptions(HtmlQuiz quiz) {
+  buildOptions(JsQuiz quiz) {
     List<Widget> optionsList = [];
     for (var element in quiz.options) {
       final key = element["key"] as String;

@@ -83,7 +83,7 @@ class _ExerciseMainState extends State<ExerciseMain>
           Stack(
             children: [
               HeaderBackWidget(
-                title: "Puzzle",
+                title: "Latihan Soal",
               )
             ],
           ),

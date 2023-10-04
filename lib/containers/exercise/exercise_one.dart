@@ -58,7 +58,7 @@ class _ExerciseOneState extends State<ExerciseOne>
             )),
         body: Column(children: [
           HeaderBackWidget(
-            title: "Compiler",
+            title: "Latihan Soal 1",
           ),
           Expanded(
               child: ListView(

@@ -145,7 +145,7 @@ class _CssQuizFormState extends State<CssQuizForm> {
               items: carouselQuiz,
               carouselController: carouselController,
               options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height - 150,
+                  height: MediaQuery.of(context).size.height - 130,
                   scrollPhysics: const NeverScrollableScrollPhysics(),
                   viewportFraction: 1,
                   initialPage: 0,

@@ -74,7 +74,7 @@ class _PuzzleTwoState extends State<PuzzleTwo> {
             )),
         body: Column(children: [
           HeaderBackWidget(
-            title: "Puzzle 1",
+            title: "Puzzle 2",
           ),
           Expanded(
               child: ListView(

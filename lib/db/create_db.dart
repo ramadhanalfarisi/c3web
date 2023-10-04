@@ -4,6 +4,7 @@ import 'package:c3web/db/css_course_db.dart';
 import 'package:c3web/db/css_quiz_db.dart';
 import 'package:c3web/db/html_course_db.dart';
 import 'package:c3web/db/html_quiz_db.dart';
+import 'package:c3web/db/js_quiz_db.dart';
 import 'package:c3web/db/js_course_db.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,16 +18,19 @@ class DB {
     Hive.registerAdapter(JsCourseAdapter());
     Hive.registerAdapter(HtmlQuizAdapter());
     Hive.registerAdapter(CssQuizAdapter());
+    Hive.registerAdapter(JsQuizAdapter());
     await Hive.openBox<HtmlCourse>('html_course_box');
     await Hive.openBox<CssCourse>('css_course_box');
     await Hive.openBox<JsCourse>('js_course_box');
     await Hive.openBox<HtmlQuiz>('html_quiz_box');
     await Hive.openBox<CssQuiz>('css_quiz_box');
+    await Hive.openBox<JsQuiz>('js_quiz_box');
     initializeHtmlCourse();
     initializeCssCourse();
     initializeJsCourse();
     initializeHtmlQuiz();
     initializeCssQuiz();
+    initializeJsQuiz();
   }
 
   initializeHtmlCourse() async {
@@ -644,6 +648,187 @@ class DB {
             question: quiz["question"] as String,
             image: quiz["image"] as String);
         box.add(cssQuiz);
+      }
+    }
+  }
+
+  initializeJsQuiz() async {
+    Box<JsQuiz> box = await Hive.openBox<JsQuiz>('js_quiz_box');
+    List<Map<String, dynamic>> dataJs = [
+      {
+        "id": 1,
+        "question":
+            "Berikut ini adalah contoh nama-nama variabel yang valid menurut aturan Javascript, KECUALI …",
+        "answer": "E",
+        "options": [
+          {"key": "A", "text": "angka1"},
+          {"key": "B", "text": "\$nilai"},
+          {"key": "C", "text": "nomor_telepon"},
+          {"key": "D", "text": "namaDepan"},
+          {"key": "E", "text": "break"}
+        ],
+        "image": ""
+      },
+      {
+        "id": 2,
+        "question": "Tipe data dari variabel str di atas adalah …",
+        "answer": "B",
+        "options": [
+          {"key": "A", "text": "Null"},
+          {"key": "B", "text": "String"},
+          {"key": "C", "text": "Number"},
+          {"key": "D", "text": "Boolean"},
+          {"key": "E", "text": "Karakter"}
+        ],
+        "image": "assets/img/quizjs2.svg"
+      },
+      {
+        "id": 3,
+        "question": "Nilai yang disimpan oleh variabel z di atas adalah…",
+        "answer": "B",
+        "options": [
+          {"key": "A", "text": "True"},
+          {"key": "B", "text": "False"},
+          {"key": "C", "text": "20"},
+          {"key": "D", "text": "1010"},
+          {"key": "E", "text": "10"}
+        ],
+        "image": "assets/img/quizjs3.svg"
+      },
+      {
+        "id": 4,
+        "question": """Perhatikan potongan kode berikut.
+var numbers = [ 1 , 2 , ‘3’ , ‘empat’ ];
+			
+Untuk menampilkan elemen pertama dari array numbers pada sebuah kotak dialog, potongan kode yang perlu ditambahkan adalah…
+""",
+        "answer": "A",
+        "options": [
+          {"key": "A", "text": "alert(numbers[0])"},
+          {"key": "B", "text": "alert(numbers[1])"},
+          {"key": "C", "text": "document.write(numbers[0])"},
+          {"key": "D", "text": "document.write(numbers[1])"},
+          {"key": "E", "text": "prompt(numbers)"}
+        ],
+        "image": ""
+      },
+      {
+        "id": 5,
+        "question":
+            "Jika variabel skor menyimpan nilai 78, maka hasil yang ditampilkan pada browser adalah …",
+        "answer": "B",
+        "options": [
+          {"key": "A", "text": "alert(numbers[0])"},
+          {"key": "B", "text": "alert(numbers[1])"},
+          {"key": "C", "text": "document.write(numbers[0])"},
+          {"key": "D", "text": "document.write(numbers[1])"},
+          {"key": "E", "text": "prompt(numbers)"}
+        ],
+        "image": "assets/img/quizjs5.svg"
+      },
+      {
+        "id": 6,
+        "question": "Output yang dihasilkan dari for loop di atas adalah …",
+        "answer": "B",
+        "options": [
+          {
+            "key": "A",
+            "text": """Belajar Javascript 
+Belajar Javascript
+"""
+          },
+          {
+            "key": "B",
+            "text": """Belajar Javascript
+Belajar Javascript
+Belajar Javascript
+"""
+          },
+          {"key": "C", "text": "Belajar Javascript  Belajar Javascript"},
+          {
+            "key": "D",
+            "text": "Belajar Javascript Belajar Javascript \nBelajar Javascript"
+          },
+          {"key": "E", "text": "Terjadi infinite looping"}
+        ],
+        "image": "assets/img/quizjs6.svg"
+      },
+      {
+        "id": 7,
+        "question":
+            "Output yang dihasilkan dari potongan kode di atas adalah …",
+        "answer": "A",
+        "options": [
+          {"key": "A", "text": "1"},
+          {"key": "B", "text": "11"},
+          {"key": "C", "text": "12"},
+          {"key": "D", "text": "123"},
+          {"key": "E", "text": "Infinite looping"}
+        ],
+        "image": "assets/img/quizjs7.svg"
+      },
+      {
+        "id": 8,
+        "question":
+            "Perintah Javascript ini digunakan untuk mengakses elemen HTML berdasarkan nilai dari atribut name-nya, dan biasanya digunakan pada komponen form seperti radio atau checkbox. Method yang dimaksud adalah…",
+        "answer": "D",
+        "options": [
+          {"key": "A", "text": "getById()"},
+          {"key": "B", "text": "getByName()"},
+          {"key": "C", "text": "getElementById()"},
+          {"key": "D", "text": "getElementsByName()"},
+          {"key": "E", "text": "getElementsByTagName()"}
+        ],
+        "image": ""
+      },
+      {
+        "id": 9,
+        "question":
+            "Untuk menampilkan kotak dialog seperti ditunjukkan gambar di atas, potongan kode yang perlu ditambahkan adalah …",
+        "answer": "B",
+        "options": [
+          {"key": "A", "text": "var x = prompt( “Berapa \ntinggi badan anda?” )"},
+          {
+            "key": "B",
+            "text": "var x = prompt( “Berapa tinggi \nbadan anda?” , “meter” )"
+          },
+          {
+            "key": "C",
+            "text": "var x = prompt( Berapa tinggi \nbadan anda? , meter )"
+          },
+          {
+            "key": "D",
+            "text": "var x = alert(“Berapa tinggi \nbadan anda?” , “meter” )"
+          },
+          {"key": "E", "text": "var x = alert( Berapa tinggi \nbadan anda? )"}
+        ],
+        "image": "assets/img/quizjs9.svg"
+      },
+      {
+        "id": 10,
+        "question":
+            "Potongan kode Javacript berikut yang tepat untuk mengubah warna background halaman web menjadi hijau adalah …",
+        "answer": "B",
+        "options": [
+          {"key": "A", "text": "background-color: green"},
+          {"key": "B", "text": 'document.body.style.backgroundColor \n= "green"'},
+          {"key": "C", "text": "document.body.style.backgroundColor \n= green"},
+          {"key": "D", "text": "document.body.style.backgroundColor \n(“green”)"},
+          {"key": "E", "text": "document.body.style.backgroundColor \n(green)"}
+        ],
+        "image": ""
+      },
+    ];
+
+    if (box.length <= 0) {
+      for (Map<String, dynamic> quiz in dataJs) {
+        JsQuiz jsQuiz = JsQuiz(
+            id: quiz["id"] as int,
+            answer: quiz["answer"] as String,
+            options: quiz["options"] as List<Map<String, String>>,
+            question: quiz["question"] as String,
+            image: quiz["image"] as String);
+        box.add(jsQuiz);
       }
     }
   }
