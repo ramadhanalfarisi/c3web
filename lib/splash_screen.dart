@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       width: 30,
                     ),
                     Image.asset(
-                      "assets/icon/Logo-GEC.jpeg",
+                      "assets/icon/acerlogo-2024.png",
                       height: 60,
                       width: 60,
                     ),
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/icon/logo-GCC-2023.png",
+                      "assets/icon/assa2024.png",
                       height: 60,
                       width: 60,
                     ),
